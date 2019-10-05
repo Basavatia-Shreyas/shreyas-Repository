@@ -109,10 +109,16 @@ public class shapes {
 		System.out.println("Hollow Diamond");
 		for (int i = n; i > 0; i--){
 			for(int j = 0; j < i; j++){
-				 System.out.print("_");
-			
-				
+				 System.out.print(" ");
 			}
+			System.out.print("*");
+			for(int k = n ; k > i; k--){
+					 System.out.print("  ");
+				
+					
+			}
+				
+			
 			System.out.println("*");
 			
 			
@@ -120,38 +126,18 @@ public class shapes {
 		
 		for (int i = n; i > 0; i--){
 			for(int j = n; j > i; j--){
-				 System.out.print("_");
+				 System.out.print(" ");
 			
 				
 			}
-			for(int k = 0; k < i; k++){
-				
-			}
-			System.out.println("*");
-			
-	}
-		for (int i = n; i > 0; i--){
-			for(int j = n; j > i; j--){
-				 System.out.print("_");
-			
-				
-			}
-			for(int k = 0; k < i; k++){
-				
-			}
-			System.out.println("*");
-			
-	}
-		for (int i = n; i > 0; i--){
+			System.out.print("*");
 			for(int j = 0; j < i; j++){
-				 System.out.print("_");
-			
-				
+				 System.out.print("  ");
 			}
 			System.out.println("*");
 			
 			
-		}
+	}
 		
 	}
 }
