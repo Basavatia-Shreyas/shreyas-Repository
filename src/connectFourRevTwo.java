@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class connectFourRevTwo {
 
 	public static void main(String[] args) {
-		String whosTurn = "R";
+		String whosTurn = "R  ";
 		boolean gameWon = false;
 		String[][] grid = new String[6][7];
 		// fill array
@@ -51,13 +51,13 @@ public class connectFourRevTwo {
 				// change the person's turn
 				else{
 					System.out.println("hiasdf");
-					grid[A][playerlctnY] = whosTurn + "  ";
+					grid[A][playerlctnY] = whosTurn;
 					
-					if (whosTurn == "R"){
-						whosTurn = "Y";
+					if (whosTurn == "R  "){
+						whosTurn = "Y  ";
 					}
-					else if (whosTurn == "Y"){
-						whosTurn = "R";
+					else if (whosTurn == "Y  "){
+						whosTurn = "R  ";
 					}
 					// print out the board
 					for (int i = 0; i<grid.length; i++){
@@ -66,24 +66,37 @@ public class connectFourRevTwo {
 						}
 						System.out.println();
 					}
-					
-					int n = 3;
-					for(int i = 6; i >= 0; i--){
-						if (grid[i][n] != "*  " && grid[i][n+1] != "*  " && grid[i][n+2] != "*  "){
-							if (grid[i][n] == "R  "  || grid[i][n] == "Y  " && grid[i][n+1] == "R  "  || grid[i][n+1] == "Y  "&& grid[i][n+2] == "R  " || grid[i][n+2] == "Y  "){
-								System.out.println("player red or player yellow wins");
-							}
-						}
-						else if(grid[i][n-1] != "*  " && grid[i][n-2] != "*  " && grid[i][n-3] != "*  "){
-							if (grid[i][n-1] == "R  "  || grid[i][n-1] == "Y  " && grid[i][n-2] == "R  "  || grid[i][n-2] == "Y  "&& grid[i][n-3] == "R  " || grid[i][n-3] == "Y  "){
-								System.out.println("player red or player yellow wins");
-							}
-							}
-						}
-					
+					// win conditions
+					int n = 0;
 					for(int i = 5; i >= 0; i--){
-
+						for (int j = 0; j<4; j++){
+							if (grid[i][j] == "*  " || grid[i][j+1] == "*  " || grid[i][j+2] == "*  " || grid[i][j+3] == "*  "){
+								continue;
+							}
+							else if (grid[i][j] == grid[i][j+1] && grid[i][j+1] == grid[i][j+2] && grid[i][j+2] == grid[i][j+3]) {
+								System.out.println("You win!");
+								gameWon = true;
+							}
+							
+						}
+						
+					}
 					
+					for (int i = 5; i >= 0; i--){
+						for (int j = 5; j>0; j--){
+							if (grid[i][j] == "*  " || grid[i-1][j] == "*  " || grid[i-2][j] == "*  " || grid[i-3][j] == "*  "){
+								continue;
+							}
+							else if (grid[i][j] == grid[i-1][j] && grid[i-1][j] == grid[i-2][j] && grid[i-2][j] == grid[i-3][j]) {
+								System.out.println("You win!");
+								gameWon = true;
+							}
+							
+						}
+					}
+						
+					
+		
 					
 				}
 			}
