@@ -67,6 +67,8 @@ public class connectFourRevTwo {
 						System.out.println();
 					}
 					// win conditions
+					
+					//horizontal
 					int n = 0;
 					for(int i = 5; i >= 0; i--){
 						for (int j = 0; j<4; j++){
@@ -81,7 +83,7 @@ public class connectFourRevTwo {
 						}
 						
 					}
-					
+					//vertical
 					for (int i = 5; i >= 0; i--){
 						for (int j = 5; j>0; j--){
 							if (grid[i][j] == "*  " || grid[i-1][j] == "*  " || grid[i-2][j] == "*  " || grid[i-3][j] == "*  "){
@@ -92,6 +94,32 @@ public class connectFourRevTwo {
 								gameWon = true;
 							}
 							
+						}
+					}
+					//diagonal
+					for(int j = 0; j <= 5; j++){
+						int i = 3;
+						if (grid[j][i] != "*  "){
+							if (j < 3){
+								if (grid[j][i] == grid[j+1][i+1] && grid[j+1][i+1] == grid[j+2][i+2] && grid[j+2][i+2] == grid[j+3][i+3]){
+									System.out.println("You Won");
+									gameWon = true;
+								}
+								else if (grid[j][i] == grid[j+1][i-1] && grid[j+1][i-1] == grid[j+2][i-2] && grid[j+2][i-2] == grid[j+3][i-3]){
+									System.out.println("You Wun");
+									gameWon = true;
+								}
+							}
+							else if (j > 2){
+								if (grid[j][i] == grid[j-1][i+1] && grid[j-1][i+1] == grid[j-2][i+2] && grid[j-2][i+2] == grid[j-3][i+3]){
+									System.out.println("You Wan");
+									gameWon = true;
+								}
+								else if (grid[j][i] == grid[j-1][i-1] && grid[j-1][i-1] == grid[j-2][i-2] && grid[j-2][i-2] == grid[j-3][i-3]){
+									System.out.println("You Win");
+									gameWon = true;
+								}
+							}
 						}
 					}
 						
