@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ticTacToeMethods {
-	public static void ticTacToe(){
+	public static void methodOne{
 		int n = 3;
 		boolean gameWon = false;
 		String whosTurn = "X";
@@ -19,9 +19,10 @@ public class ticTacToeMethods {
 			System.out.println();
 			
 		}
+	}
 		
-		while (gameWon == false){
-			
+		
+		public static void methodTwo(){
 			System.out.println("Enter the x coordinate");
 			Scanner turnX = new Scanner(System.in);
 			int playerTurnX = turnX.nextInt();
@@ -127,10 +128,10 @@ public class ticTacToeMethods {
 				
 			}
 		}
-	}
+			
 	
 		public static void main(String[] args){
-			ticTacToe();
+
 	}
 	
 }

@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class ticTacToeMethodsRev2 {
+	boolean gameWon = false;
 	public static void methodOne(){
 		int n = 3;
-		boolean gameWon = false;
 		String whosTurn = "X";
 		String[][] list = new String[n][n];
 		
@@ -19,10 +19,11 @@ public class ticTacToeMethodsRev2 {
 			System.out.println();
 			
 		}
+		
 	}
 	
-	public static void methodTwo(){
-while (gameWon == false){
+	public static void methodTwo(gameWon){
+		while (gameWon == false){
 			
 			System.out.println("Enter the x coordinate");
 			Scanner turnX = new Scanner(System.in);
@@ -131,5 +132,6 @@ while (gameWon == false){
 		}
 	}
 	public static void main(String[] args){
+		methodTwo(methodOne());
 	}
 }
