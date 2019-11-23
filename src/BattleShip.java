@@ -2,16 +2,19 @@ import java.util.Scanner;
 
 public class BattleShip {
 	public static void setUp(){
+		boolean youGetAPiece = true;
 		//create lists
 		String[][] playerOneBoard = new String[8][8];
 		String[][] playerTwoBoard = new String[8][8];
 		String[][] playerOneTopBoard = new String[8][8];
 		String[][] playerTwoTopBoard = new String[8][8];
 		//fill the lists
-		for (int i = 8; i>=0; i--){
-			for (int j = 8; j>=0; j--){
+		for (int i = 7; i>=0; i--){
+			for (int j = 7; j>=0; j--){
 				playerOneBoard[i][j] = "*  ";
 				playerTwoBoard[i][j] = "*  ";
+				playerOneTopBoard[i][j] = "*  ";
+				playerTwoTopBoard[i][j] = "*  ";
 			}
 		}
 		//Print Board
@@ -26,6 +29,11 @@ public class BattleShip {
 		System.out.println("Player One Setup");
 		System.out.println("Where do you want start point of the thing and Horizontal(h) or Vertical(v)");
 		int[] shipL = new int[5];
+		shipL[0] = 2;
+		shipL[1] = 3;
+		shipL[2] = 3;
+		shipL[3] = 4;
+		shipL[4] = 5;
 		for(int i = 5; i>-1; i--){
 			Scanner x = new Scanner(System.in);
 			int X = x.nextInt();
@@ -37,36 +45,71 @@ public class BattleShip {
 			}
 			//Check if taken and fill in if not
 			String Orientation = x.next();
-			if (Orientation == "v"){
-				for(int j = Y; j>Y-shipL; j--){
-					if (playerOneBoard[Y][X] != "*  "){
-						System.out.print("Sorry that place is already taken ");
+			if (Orientation.equals("v")){
+				for(int j = Y; j>Y-shipL[i-1]; j--){
+					if(j>-1 && j<8){
+						if (playerOneBoard[j][X] != "*  " || playerOneBoard[j][X].equals("poo")){
+							System.out.print("Sorry that place is already taken ");
+							youGetAPiece = false;
+						}
+						else{
+							continue;
+						}
 					}
-					else{
-						continue;
-					}
+					
 				}
 			}
-			else if (Orientation == "h"){
-				for(int j = X; j>X-shipL; j--){
-					if (playerOneBoard[Y][X] != "*  "){
-						System.out.print("Sorry that place is already taken ");
+			else if (Orientation.equals("h")){
+				for(int j = X; j>X-shipL[i-1]; j--){
+					if(j>-1 && j<8){
+						if (playerOneBoard[Y][j] != "*  " || playerOneBoard[j][X].equals("poo")){
+							System.out.print("Sorry that place is already taken ");
+							youGetAPiece = false;
+						}
+						else{
+							continue;
+						}
 					}
-					else{
-						continue;
-					}
+					
 				}
 			}
 			//fill 
-			if (Orientation == "v"){
-				for(int j = Y; j>Y-shipL; j--){
-					playerOneBoard[Y][X] = "poo";
+			if (Orientation.equals("v")){
+				for(int j = Y; j>Y-shipL[i-1]; j--){
+					if(j>-1 && j<8){
+						if (youGetAPiece == false){
+							System.out.println("You suck");
+						}
+						if(playerOneBoard[j][X].equals("poo")){
+							System.out.println("You suck");
+						}
+						else{
+							playerOneBoard[j][X] = "poo";
+						}
+					}
+					
 				}
 			}
-			else if (Orientation == "h"){
-				for(int j = X; j>X-shipL; j--){
-					playerOneBoard[Y][X] = "poo";
+			else if (Orientation.equals("h")){
+				for(int j = X; j>X-shipL[i-1]; j--){
+					if(j>-1 && j<8){
+						if(playerOneBoard[Y][j].equals("poo")){
+							System.out.println("You suck");
+						}
+						else{
+							playerOneBoard[Y][j] = "poo";
+						}
+					}
+					
 				}
+			}
+			// print filled in board
+			for (int k = 0; k<playerOneBoard.length; k++){
+				for (int j = 0; j<playerOneBoard[k].length; j++){
+					System.out.print(playerOneBoard[k][j]);
+				}
+				System.out.println();
+				
 			}
 		
 	}
@@ -75,6 +118,6 @@ public class BattleShip {
 }
 	public static void main(String[] args) {
 		//game loop
-		
+		setUp();
 	}
 }
