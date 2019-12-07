@@ -1,13 +1,19 @@
 import java.util.Scanner;
+import java.lang.Runtime;
+import java.lang.reflect.Array;
+
+
 
 public class BattleShip {
+	static String[][] playerOneBoard = new String[8][8];
+	static String[][] playerTwoBoard = new String[8][8];
+	static String[][] playerOneTopBoard = new String[8][8];
+	static String[][] playerTwoTopBoard = new String[8][8];
 	public static void setUp(){
 		boolean youGetAPiece = true;
+		//Process run = Runtime.getRuntime().exec("cmd.exe", "/c", "Start", new File("path of the bat file"));
 		//create lists
-		String[][] playerOneBoard = new String[8][8];
-		String[][] playerTwoBoard = new String[8][8];
-		String[][] playerOneTopBoard = new String[8][8];
-		String[][] playerTwoTopBoard = new String[8][8];
+
 		//fill the lists
 		for (int i = 7; i>=0; i--){
 			for (int j = 7; j>=0; j--){
@@ -23,7 +29,7 @@ public class BattleShip {
 				System.out.print(playerOneTopBoard[i][j]);
 			}
 			System.out.println();
-			
+
 		}
 		//setup the game boards(Fill with ships)
 		System.out.println("Player One Setup");
@@ -56,7 +62,7 @@ public class BattleShip {
 							continue;
 						}
 					}
-					
+
 				}
 			}
 			else if (Orientation.equals("h")){
@@ -70,7 +76,7 @@ public class BattleShip {
 							continue;
 						}
 					}
-					
+
 				}
 			}
 			//fill 
@@ -87,7 +93,7 @@ public class BattleShip {
 							playerOneBoard[j][X] = "poo";
 						}
 					}
-					
+
 				}
 			}
 			else if (Orientation.equals("h")){
@@ -100,7 +106,7 @@ public class BattleShip {
 							playerOneBoard[Y][j] = "poo";
 						}
 					}
-					
+
 				}
 			}
 			// print filled in board
@@ -109,15 +115,153 @@ public class BattleShip {
 					System.out.print(playerOneBoard[k][j]);
 				}
 				System.out.println();
-				
-			}
-		
-	}
-	
 
-}
+			}
+
+
+
+
+
+
+
+
+			boolean youGetAPieceTwo = true;
+			//Process run = Runtime.getRuntime().exec("cmd.exe", "/c", "Start", new File(beep.c));
+			//Print Board
+			for (int itwo = 0; itwo<playerTwoTopBoard.length; itwo++){
+				for (int j = 0; j<playerTwoTopBoard[i].length; j++){
+					System.out.print(playerTwoTopBoard[i][j]);
+				}
+				System.out.println();
+
+			}
+			//setup the game boards(Fill with ships)
+			System.out.println("Player Two Setup");
+			System.out.println("Where do you want start point of the thing and Horizontal(h) or Vertical(v)");
+			for(int itwo = 5; itwo>-1; itwo--){
+				Scanner xtwo = new Scanner(System.in);
+				int XTwo = xtwo.nextInt();
+				int YTwo = xtwo.nextInt();
+				//Check if valid
+				if (XTwo > 8 || XTwo < 0 || YTwo > 8 || YTwo < 0){
+					System.out.println("You suck");
+					continue;
+				}
+				//Check if taken and fill in if not
+				String OrientationTwo = x.next();
+				if (OrientationTwo.equals("v")){
+					for(int j = YTwo; j>YTwo-shipL[i-1]; j--){
+						if(j>-1 && j<8){
+							if (playerTwoBoard[j][XTwo] != "*  " || playerTwoBoard[j][XTwo].equals("poo")){
+								System.out.print("Sorry that place is already taken ");
+								youGetAPieceTwo = false;
+							}
+							else{
+								continue;
+							}
+						}
+
+					}
+				}
+				else if (OrientationTwo.equals("h")){
+					for(int j = XTwo; j>XTwo-shipL[i-1]; j--){
+						if(j>-1 && j<8){
+							if (playerTwoBoard[YTwo][j] != "*  " || playerTwoBoard[j][XTwo].equals("poo")){
+								System.out.print("Sorry that place is already taken ");
+								youGetAPieceTwo = false;
+							}
+							else{
+								continue;
+							}
+						}
+
+					}
+				}
+				//fill 
+				if (OrientationTwo.equals("v")){
+					for(int j = YTwo; j>YTwo-shipL[i-1]; j--){
+						if(j>-1 && j<8){
+							if (youGetAPieceTwo == false){
+								System.out.println("You suck");
+							}
+							if(playerTwoBoard[j][XTwo].equals("poo")){
+								System.out.println("You suck");
+							}
+							else{
+								playerTwoBoard[j][XTwo] = "poo";
+							}
+						}
+
+					}
+				}
+				else if (OrientationTwo.equals("h")){
+					for(int j = XTwo; j>XTwo-shipL[i-1]; j--){
+						if(j>-1 && j<8){
+							if(playerTwoBoard[YTwo][j].equals("poo")){
+								System.out.println("You suck");
+							}
+							else{
+								playerTwoBoard[YTwo][j] = "poo";
+							}
+						}
+
+					}
+				}
+				// print filled in board
+				for (int k = 0; k<playerTwoBoard.length; k++){
+					for (int j = 0; j<playerTwoBoard[k].length; j++){
+						System.out.print(playerTwoBoard[k][j]);
+					}
+					System.out.println();
+
+				}
+
+			}
+		}
+
+	}
 	public static void main(String[] args) {
-		//game loop
+		//setup
 		setUp();
+
+		//game loop
+		String whosTurn = "Player one";
+		System.out.println("Enter a coordinate");
+		Scanner x = new Scanner(System.in);
+		int X = x.nextInt();
+		int Y = x.nextInt();
+		//Check if valid
+		if (X > 8 || X < 0 || Y > 8 || Y < 0){
+			System.out.println("You suck");
+		}
+		if (whosTurn == "Player one"){
+			player
+		}
+
+		//win conditions
+		int y = 0;
+		int z = 0;
+		for (;z<8; z++ ){
+			for(;y<8; y++){
+				if(playerOneBoard[y][z] == "*  "){
+					System.out.println("OK");
+				}
+				else{
+					System.out.println("You suck");
+					continue;
+				}
+			}
+		}
+		for (;z<8; z++){
+			for(;y<8; y++){
+				if(playerTwoBoard[y][z] == "*  "){
+					System.out.println("OK");
+				}
+				else{
+					System.out.println("You suck");
+					continue;
+				}
+			}
+		}
 	}
 }
