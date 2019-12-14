@@ -1,17 +1,31 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
 import java.lang.Runtime;
 import java.lang.reflect.Array;
 
 
 
-public class BattleShip {
+public class BattleShip{
+	public static void beeper() throws IOException{
+		
+		try{
+			String[] args = new String[] {"shreyas b/beep"};
+			new ProcessBuilder(args).start();
+			//Runtime.getRuntime().exec("/bin/bash -c ./beep");
+			//Runtime.getRuntime().exec(" /beeper.sh");
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
 	static String[][] playerOneBoard = new String[8][8];
 	static String[][] playerTwoBoard = new String[8][8];
 	static String[][] playerOneTopBoard = new String[8][8];
 	static String[][] playerTwoTopBoard = new String[8][8];
-	public static void setUp(){
+	public static void setUp() throws IOException{
 		boolean youGetAPiece = true;
-		//Process run = Runtime.getRuntime().exec("cmd.exe", "/c", "Start", new File("path of the bat file"));
 		//create lists
 
 		//fill the lists
@@ -47,6 +61,7 @@ public class BattleShip {
 			//Check if valid
 			if (X > 8 || X < 0 || Y > 8 || Y < 0){
 				System.out.println("You suck");
+				beeper();
 				continue;
 			}
 			//Check if taken and fill in if not
@@ -56,6 +71,7 @@ public class BattleShip {
 					if(j>-1 && j<8){
 						if (playerOneBoard[j][X] != "*  " || playerOneBoard[j][X].equals("poo")){
 							System.out.print("Sorry that place is already taken ");
+							beeper();
 							youGetAPiece = false;
 						}
 						else{
@@ -70,6 +86,7 @@ public class BattleShip {
 					if(j>-1 && j<8){
 						if (playerOneBoard[Y][j] != "*  " || playerOneBoard[j][X].equals("poo")){
 							System.out.print("Sorry that place is already taken ");
+							beeper();
 							youGetAPiece = false;
 						}
 						else{
@@ -85,9 +102,11 @@ public class BattleShip {
 					if(j>-1 && j<8){
 						if (youGetAPiece == false){
 							System.out.println("You suck");
+							beeper();
 						}
 						if(playerOneBoard[j][X].equals("poo")){
 							System.out.println("You suck");
+							beeper();
 						}
 						else{
 							playerOneBoard[j][X] = "poo";
@@ -101,6 +120,7 @@ public class BattleShip {
 					if(j>-1 && j<8){
 						if(playerOneBoard[Y][j].equals("poo")){
 							System.out.println("You suck");
+							beeper();
 						}
 						else{
 							playerOneBoard[Y][j] = "poo";
@@ -220,8 +240,9 @@ public class BattleShip {
 		}
 
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		//setup
+		beeper();
 		setUp();
 
 		//game loop
@@ -234,9 +255,9 @@ public class BattleShip {
 		if (X > 8 || X < 0 || Y > 8 || Y < 0){
 			System.out.println("You suck");
 		}
-		if (whosTurn == "Player one"){
-			player
-		}
+		//if (whosTurn == "Player one"){
+		
+		//}
 
 		//win conditions
 		int y = 0;
