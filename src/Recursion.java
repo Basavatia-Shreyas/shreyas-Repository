@@ -44,6 +44,19 @@ public class Recursion {
 		return fibonacci(E-1) + fibonacci(E-2);
 
 	}
+	
+	public static void towersOfHanoi(int T, int poleOne, int poleTwo, int poleThree){
+		if (T == 1){
+			System.out.println("move 1 from " + poleOne + " to " + poleTwo);
+			return;
+		}
+		
+		towersOfHanoi(T-1, poleOne, poleThree, poleTwo);
+		System.out.println("move " + T +" from " + poleOne + " to " + poleTwo);
+		towersOfHanoi(T-1, poleThree, poleTwo, poleOne);
+	}
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int x = 100;
@@ -73,6 +86,13 @@ public class Recursion {
 		
 		int E = hello.nextInt();
 		System.out.println(fibonacci(E));
+		
+		
+		
+		//towers of hanoi
+		int T = hello.nextInt();
+		towersOfHanoi(T, 1, 3, 2);
+		
 	}
 
 }
