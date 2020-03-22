@@ -33,11 +33,11 @@ public class Deck {
 		return card;
 	}
 	
-	public void shuffle(){//first two cards not shuffling
+	public void shuffle(){
 		Random a = new Random();
 		for(int i = 1000; i>=0; i--) {
-			int b = a.nextInt(51);
-			int c = a.nextInt(51);
+			int b = a.nextInt(52);
+			int c = a.nextInt(52);
 			Card d = stuff.get(b);
 			stuff.set(b, stuff.get(c));
 			stuff.set(c, d);

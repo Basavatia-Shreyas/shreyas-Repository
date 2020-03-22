@@ -17,7 +17,9 @@ public class testClass {
 		System.out.println(testCard);
 		
 		Deck testDeck = new Deck();
+		
 		testDeck.shuffle();
+		System.out.println(testDeck.pop());
 		System.out.println(testDeck.pop());
 		System.out.println(testDeck.pop());
 		System.out.println(testDeck.pop());
