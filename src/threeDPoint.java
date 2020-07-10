@@ -19,6 +19,12 @@ public class threeDPoint {
 	public int getZ() {
 		return z;
 	}
+	public String toString() {
+		int x = getX();
+		int y = getY();
+		int z = getZ();
+		return "(" + x + ", " + y + ", " + z +")";
+	}
 	
 	public double distance(threeDPoint aPoint) {
 		return Math.pow(Math.pow(this.x - aPoint.getX(), 2)+Math.pow(this.y - aPoint.getY(), 2)+Math.pow(this.z - aPoint.getZ(), 2) , .5);
